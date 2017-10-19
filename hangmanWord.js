@@ -1,8 +1,7 @@
-var letter = ('./hangmanLetters.js');
 
-var letter = require('./letter.js');
+var letter = require('./hangmanLetters.js');
 
-function Word(target) {
+function HangmanWord(target) {
 	this.target = target;
 	this.lets = [];
 	this.found = false;
@@ -24,7 +23,7 @@ function Word(target) {
 		var toReturn = 0;
 
 		for (var i = 0; i < this.lets.length; i++) {
-			if (this.lets[i].charac == guessLet){
+			if (this.lets[i].charac === guessLet){
 				this.lets[i].appear = true;
 				toReturn++;
 			}
@@ -42,4 +41,4 @@ function Word(target) {
 
 }
 
-module.exports = hangmanWord;
+module.exports = HangmanWord;

@@ -1,8 +1,7 @@
-var hangmanLetter = require ('./hangmanLetters.js');
-var hangmanWord = require('./hangmanWord.js');
+var letter = require('./hangmanLetters.js');
+var word = require('./hangmanWord.js');
 var prompt = require('prompt');
 
-console.log("Welcome to Flavor Hangman!");
 console.log("Guess a letter of the name of a flavor");
 console.log("-----------------------------");
 prompt.start();
@@ -17,7 +16,7 @@ game = {
  	
  	startGame: function (wrd) {
  		this.resetGuesses();
- 		this.currentWrd = new Word(this.wordArray[Math.floor(Math.random()* this.wordBank.length)]);
+ 		this.currentWrd = new word(this.wordArray[Math.floor(Math.random()* this.wordArray.length)]);
  		this.currentWrd.getLet();
  		this.promptUser();
  	},
@@ -32,7 +31,7 @@ game = {
  			console.log("You guessed: " + result.guessLet);
  			var manyGuessed = self.currentWrd.checkLetter(result.guessLet);
 
- 			if(manyGuessed ==0) {
+ 			if(manyGuessed ===0) {
  				console.log("WRONG");
  				self.guessesRemaining--;
  				
@@ -47,10 +46,10 @@ game = {
 
  			console.log("Guesses remaining: " + self.guessesRemaining);
  			console.log("-------------------");
- 			if((self.guessesRemaining > 0) && (self.currentWrd.found == false)){
+ 			if((self.guessesRemaining > 0) && (self.currentWrd.found === false)){
  				self.promptUser();
  			}
- 			else if(self.guessesRemaining ==0){
+ 			else if(self.guessesRemaining ===0){
  				console.log("Game over. Correct Word ", self.currentWrd.target);
  			} else {
  				console.log(self.currentWrd.wordRender());
